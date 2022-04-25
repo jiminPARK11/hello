@@ -1,0 +1,121 @@
+@charset "UTF-8";
+
+body, html {
+	height: 100%;
+}
+
+.header {
+	background-color: gray;
+	height: 20%
+}
+
+.content {
+	height: 60%;
+}
+
+table.type11 {
+  border-collapse: separate;
+  border-spacing: 1px;
+  text-align: center;
+  line-height: 1.5;
+  width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+table.search {
+	width: 50%;
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+table.type11 th {
+  width: 150px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  color: #fff;
+  background: #ccc ;
+}
+table.type11 td {
+  width: 155px;
+  padding: 10px;
+  vertical-align: top;
+  border-bottom: 1px solid #ccc;
+  background: white;
+}
+
+table.type02 {
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+  line-height: 1.5;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  margin-top: 40px;
+  margin-left: 170px;
+  /*width: 30%;*/
+  float: left;
+}
+table.type02 th {
+  /*width: 150px;*/
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  background: #eee;
+}
+table.type02 td {
+  /*width: 150px;*/
+  padding: 10px;
+  vertical-align: top;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+table.type03 {
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+  line-height: 1.5;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  margin-top: 40px;
+  margin-right: 150px;
+  width: 37%;
+  float: right;
+}
+table.type03 th {
+  width: 125px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  background: #eee;
+  text-align:center;
+}
+table.type03 td {
+  /*width: 150px;*/
+  padding: 10px;
+  vertical-align: top;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+table.type04 {
+	margin-top: 15px;
+	margin-right: 250px;
+  	float: right;
+}
+
+.footer {
+	background-color: yellow;
+	height: 20%
+}

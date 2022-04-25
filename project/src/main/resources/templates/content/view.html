@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<link th:href="@{/css/common.css}" rel="stylesheet" />
+</head>
+<body>
+	<div layout:fragment="content" class="content">
+		<h2>과제_그룹웨어 사용자 관리 프로그램</h2>
+		<hr>
+		<!-- 아래의 코드를 추가 합니다.-->
+		<table class="type11" border="1">
+			<tr>
+				<th>조직도</th>
+				<th>사용자관리</th>
+			</tr>
+		</table>
+		<!--<th:block th:each="rl : ${resultList}">-->
+		<form action="/home/search" method="get">
+			<table class="search" border="1">
+				<tr style="align-content: center;">
+					<th>이름</th>
+					<th><input class="input" type="text" name="user_nm"
+						style="width: 98%;"></input></th>
+					<th><button style="width: 98%;">검색</button></th>
+				</tr>
+			</table>
+		</form>
+		<!--<td th:text="${ rl }"></td>-->
+		<form method="get" action="/home/view">
+		<table class="type02" border="1">
+			<tr>
+				<th style="width: 110px;">id</th>
+				<th style="width: 110px;">name</th>
+				<th style="width: 150px;">부서명</th>
+				<th style="width: 75px;">조회하기</th>
+			</tr>
+			<th:block th:each="project : ${projectList}">
+				<tr>
+					<td th:text="${ project.user_id }"></d>
+					<td th:text="${ project.user_nm }"></td>
+					<td th:text="${ project.dept_nm }"></td>
+					<td align="center"><button name="id" th:value="${ project.user_id }" style="width: 60%;">선택</button></td>
+				</tr>
+			</th:block>
+		</table>
+		</form>
+		<form method="post">
+			<table class="type03">
+			<th:block th:each="project : ${projectEmpList}">
+				<tr>
+					<th scope="row">ID</th>
+					<td><input name="user_id" th:value="${ project.user_id }" readonly="readonly" style="width: 96%;"></td>
+				</tr>
+				<tr>
+					<th scope="row">사원명</th>
+					<td><input th:value="${ project.user_nm }" type="text" name="user_nm" style="width: 96%;"></td>
+				</tr>
+				<tr>
+					<th scope="row">부서</th>
+					<td><input th:value="${ project.dept_nm }" type="text" style="width: 96%;" readonly="readonly"></td>
+					</tr>
+				<tr>
+					<th scope="row">부서 코드</th>
+					<td><input type="text" name="dept_cd" style="width: 96%;" placeholder="D1:공무_D2:공사_E1:회계자금_E2:인사총무_F1:마케팅지원"><br>*정보 수정 시, 부서 코드를 꼭 입력하세요.<br>*부서 이동 시, 이동할 부서의 코드를 입력하세요.</td>
+				</tr>
+				
+					<!-- <td><select style="width: 50%;">
+							<option value="부서명">부서명</option>
+							<optgroup label="상위부서1">
+								<th:block th:each="dept : ${deptList}">
+									<option th:text="${dept.dept_nm}"></option>
+								</th:block></optgroup></select></td>-->
+				<tr>
+					<th scope="row">전화번호</th>
+					<td><input th:value="${ project.telno }" type="text" name="telno" style="width: 96%;"></td>
+				</tr>
+				<tr>
+					<th scope="row">주소</th>
+					<td><input type="text"th:value="${ project.user_addr }" name="user_addr" style="width: 96%;"></td>
+				</tr>
+				<tr>
+					<th scope="row">취미</th>
+					<td><input type="checkbox" th:value="H1" name="hobby_cd">등산
+						<input type="checkbox" th:value="H2" name="hobby_cd">게임
+						<input type="checkbox" th:value="H3" name="hobby_cd">야구
+						<input type="checkbox" th:value="H4" name="hobby_cd">클라이밍
+						<input type="checkbox" th:value="H5" name="hobby_cd">자전거
+					</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td align="right">
+						<button formaction="/home/update">수정</button>
+						<button formaction="/home/delete">삭제</button></td>
+				</tr>
+				</th:block>
+			</table>
+			</form>
+		
+
+	</div>
+	
+	<script type="text/javascript" th:inline="javascript">
+		$(document).ready(function(){
+			var hobby = [[${hobby}]];
+
+			$('input:checkbox[name="hobby_cd"]').each(function(){
+				for(var i=0; i<hobby.length; i++) {
+					if(this.value == hobby[i]) {
+						this.checked = true;
+					}
+				}
+			});
+		})
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jm.ds.mapper.ProjectMapper">
+	<select id="getProject" resultType="ProjectModel">
+		SELECT u.user_id, u.user_nm,
+		d.dept_nm, u.telno, u.user_addr
+		FROM tbl_user u,
+		tbl_dept d
+		where
+		u.dept_cd = d.dept_cd
+	</select>
+
+	<select id="search" resultType="ProjectModel"
+		parameterType="String">
+		select u.user_id, u.user_nm, d.dept_nm, u.telno,
+		u.user_addr
+		from tbl_user u, tbl_dept d
+		where u.dept_cd = d.dept_cd
+		and
+		u.user_nm like '%'||#{user_nm}||'%'
+	</select>
+
+	<select id="view" resultType="ProjectModel"
+		parameterType="String">
+		select u.user_id, u.user_nm, d.dept_nm, u.telno,
+		u.user_addr
+		from tbl_user u, tbl_dept d
+		where u.dept_cd = d.dept_cd
+		and
+		u.user_id = #{id}
+	</select>
+
+	<!-- 부서 <select id="getDept" resultType="DeptModel"> select * from tbl_dept 
+		where up_dept_cd = 'A' </select> -->
+	<!-- insert INSERT INTO [TABLE] (컬럼...) VALUE (입력 값 바인딩..) VALUE : 단일 값 
+		입력 VALUES : 복수의 ROW 입력 -->
+	<insert id="insertUser">
+		insert into tbl_user values(#{user_id}, #{user_nm},
+		#{dept_cd}, #{telno}, #{user_addr})
+	</insert>
+
+	<!-- update update [TABLE] SET 컬럼 = 값,컬럼2 = 값2,... WHERE [...] -->
+	<update id="updateUser">
+		update tbl_user
+		SET user_nm = #{user_nm},
+		dept_cd =
+		#{dept_cd},
+		telno = #{telno},
+		user_addr = #{user_addr}
+		WHERE user_id =
+		#{user_id}
+	</update>
+
+	<insert id="insertHobby">
+		insert into tbl_user_hobby values(#{hobby_cd},
+		#{user_id})
+	</insert>
+
+	<!-- delete delete [TABLE] WHERE [...] -->
+	<delete id="deleteUser">
+		delete from tbl_user where user_id = #{user_id}
+	</delete>
+
+	<delete id="deleteHobby" parameterType="String">
+		delete from
+		tbl_user_hobby where user_id = #{user_id}
+	</delete>
+
+	<select id="getHobby" resultType="String" parameterType="String">
+		SELECT LISTAGG(hobby_cd, ',')
+		WITHIN GROUP(ORDER BY user_id) AS hobby_cd
+		FROM tbl_user_hobby
+		WHERE user_id = #{user_id}
+		GROUP BY user_id
+	</select>
+
+</mapper>
