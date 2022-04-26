@@ -18,6 +18,10 @@ repositories {
 	mavenCentral()
 }
 
+bootBuildImage {
+	imageName = "project"
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -33,6 +37,3 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-bootBuildImage {
-	imageName = "project"
-}
