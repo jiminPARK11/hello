@@ -34,5 +34,5 @@ tasks.named('test') {
 }
 
 bootBuildImage {
-	imageName = "${project.name}"
+	imageName = "project"
 }
